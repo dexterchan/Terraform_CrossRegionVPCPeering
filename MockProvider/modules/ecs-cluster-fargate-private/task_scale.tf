@@ -1,6 +1,6 @@
 
 
-
+/*
 resource "aws_appautoscaling_target" "ecs_target" {
   max_capacity       = var.max_size
   min_capacity       = var.min_size
@@ -27,3 +27,4 @@ resource "aws_appautoscaling_policy" "ecs_policy" {
     }
   
 }
+*/

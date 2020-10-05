@@ -16,9 +16,6 @@ variable "launch_config_security_group" {
   description = "launch config security group id list"
 }
 
-variable "ALB_security_group" {
-  description = "ALB security group id list"
-}
 variable "vpc-endpoint_security_group" {
   description = "vpc endpoint security group"
 }
@@ -36,8 +33,8 @@ variable "associate_public_ip_address" {
   default     = false
 }
 
-variable "alb_subnets" {
-  description = "alb subnets"
+variable "lb_subnets" {
+  description = "load balancer subnets"
 }
 
 variable "asg_subnets" {
@@ -70,12 +67,4 @@ variable "ssl_certificate_arn" {
 
 variable "task_docker_image" {
   description = "task docker image"
-}
-
-variable "route53_zone_id" {
-  description = "Route 53 zone id"
-}
-
-variable "route53_A_record_hostname" {
-  description = "Route 53 A Record hostname"
 }

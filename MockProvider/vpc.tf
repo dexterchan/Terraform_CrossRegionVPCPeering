@@ -14,55 +14,6 @@ module "vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
 
-/*
-  public_dedicated_network_acl = true
-  public_inbound_acl_rules = [
-    {
-      rule_number = 100
-      rule_action = "allow"
-      from_port   = 80
-      to_port     = 80
-      protocol    = "tcp"
-      cidr_block  = "0.0.0.0/0"
-    },
-    {
-      rule_number = 200
-      rule_action = "allow"
-      from_port   = 443
-      to_port     = 443
-      protocol    = "tcp"
-      cidr_block  = "0.0.0.0/0"
-    },
-    {
-      rule_number = 300
-      rule_action = "allow"
-      from_port   = 22
-      to_port     = 22
-      protocol    = "tcp"
-      cidr_block  = "0.0.0.0/0"
-    },
-    {
-      rule_number = 400
-      rule_action = "allow"
-      from_port   = 80
-      to_port     = 65535
-      protocol    = "tcp"
-      cidr_block  = var.vpc_cidr
-    }
-  ]
-  private_dedicated_network_acl = true
-
-  private_inbound_acl_rules = [
-    {
-      rule_number = 100
-      rule_action = "allow"
-      from_port   = 0
-      to_port     = 0
-      protocol    = "-1"
-      cidr_block  = var.vpc_cidr
-    }
-  ]*/
-
 }
 
 resource "aws_security_group" "web-dmz" {
@@ -132,7 +83,7 @@ resource "aws_security_group" "web-app" {
     from_port       = 0
     to_port         = 0
     protocol        = "-1"
-    security_groups = [aws_security_group.web-dmz.id]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
 

@@ -66,11 +66,3 @@ variable "max_size" {
 variable "task_docker_image" {
   description = "task docker image"
 }
-
-variable "route53_zone_id" {
-  description = "Route 53 zone id"
-}
-
-variable "route53_A_record_hostname" {
-  description = "Route 53 A Record hostname"
-}
