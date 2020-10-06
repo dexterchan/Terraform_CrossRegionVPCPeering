@@ -12,5 +12,10 @@ vpc_private_subnets = ["10.10.1.0/24", "10.10.2.0/24"]
 bastionhost_ami="ami-0e306788ff2473ccb"
 
 main_region="us-west-2"
-client_main_region_vpc_id="vpc-0c3fa67d53e6f9120"
 app_port=80
+
+client_main_region_vpc_id="vpc-035fb18f0a87234eb"
+client_main_region_private_route_table_id = [
+  "rtb-0caed716be6713bfd",
+  "rtb-0a7a37eedb613a5fa",
+]

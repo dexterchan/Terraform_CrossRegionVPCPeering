@@ -52,7 +52,14 @@ variable "app_port"{
 
 variable "client_main_region_vpc_id" {
     description = "client main region vpc id"
+    type = string
 }
+
+variable "client_main_region_private_route_table_id"{
+    description = "client main region private route table id"
+    type = list(string)
+}
+
 
 variable "bastionhost_ami" {
   description = "bastionhost ami"

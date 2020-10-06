@@ -12,4 +12,4 @@ bastionhost_ami="ami-0528a5175983e7f28"
 
 app_port=80
 
-app_endpoint_svc_name="com.amazonaws.vpce.us-west-2.vpce-svc-07be610fda53aa38c"
+app_endpoint_svc_name="com.amazonaws.vpce.us-west-2.vpce-svc-0a780559084c22b1d"

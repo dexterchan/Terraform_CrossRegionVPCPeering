@@ -5,5 +5,5 @@ output "vpc_endpoint_service_mktsvc_service_name" {
 
 output "nlb_address" {
   description = "nlb address"
-  value       = aws_vpc_endpoint_service.mktsvc.service_name
+  value       = aws_lb.fargate.dns_name
 }
