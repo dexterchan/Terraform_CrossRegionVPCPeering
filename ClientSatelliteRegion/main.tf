@@ -8,8 +8,16 @@ terraform {
 }
 
 provider "aws" {
-  profile = "FAKE_CLIENT_MAIN"
+  profile = "FAKE_CLIENT_SAT"
   region  = var.region
+}
+
+provider "aws" {
+  alias  = "main"
+  profile = "FAKE_CLIENT_MAIN"
+  region = var.main_region
+
+  # Accepter's credentials.
 }
 
 
@@ -33,6 +41,10 @@ resource "aws_instance" "bastion" {
   }
 }
 
+resource "aws_iam_instance_profile" "instance_profile" {
+  name = "satellite_instance_profile"
+  role = aws_iam_role.ec2_instance_role.name
+}
 
 resource "aws_instance" "testprivate" {
   key_name      = aws_key_pair.deployer.key_name
@@ -41,9 +53,12 @@ resource "aws_instance" "testprivate" {
   subnet_id     = module.vpc.private_subnets[0]
   security_groups = [aws_security_group.bastion_ssh_private.id]
 
+  iam_instance_profile = aws_iam_instance_profile.instance_profile.name
   tags = {
     Terraform   = "true"
     Environment = "dev"
     Name = "testprivate"
   }
+
+  depends_on = [aws_iam_instance_profile.instance_profile]
 }

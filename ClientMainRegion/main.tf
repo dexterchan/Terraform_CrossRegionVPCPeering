@@ -12,17 +12,37 @@ provider "aws" {
   region  = var.region
 }
 
-
-module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-
-  name = var.vpc_name
-  cidr = var.vpc_cidr
-
-  azs             = var.vpc_azs
-  private_subnets = var.vpc_private_subnets
-  
-  enable_nat_gateway = false
-
-  tags = var.vpc_tags
+resource "aws_key_pair" "deployer" {
+  key_name   = var.key_name
+  public_key = var.testPubKey
 }
+
+resource "aws_instance" "bastion" {
+  key_name      = aws_key_pair.deployer.key_name
+  ami           = var.bastionhost_ami
+  instance_type = "t2.micro"
+  subnet_id     = module.vpc.public_subnets[0]
+  security_groups = [aws_security_group.bastion_ssh.id]
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+    Name = "bastion"
+  }
+}
+
+
+resource "aws_instance" "testprivate" {
+  key_name      = aws_key_pair.deployer.key_name
+  ami           = var.bastionhost_ami
+  instance_type = "t2.micro"
+  subnet_id     = module.vpc.private_subnets[0]
+  security_groups = [aws_security_group.bastion_ssh_private.id]
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+    Name = "testprivate"
+  }
+
+}
+

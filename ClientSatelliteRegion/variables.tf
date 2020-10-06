@@ -1,6 +1,9 @@
 variable "region" {
     type = string
 }
+variable "main_region" {
+    type = string
+}
 
 variable "key_name" {
   default = "aws_humble_pig"
@@ -38,8 +41,6 @@ variable "vpc_private_subnets" {
   type = list(string)
 }
 
-
-
 variable "vpc_public_subnets" {
   description = "Public subnets for VPC"
   type = list(string)
@@ -47,7 +48,10 @@ variable "vpc_public_subnets" {
 
 variable "app_port"{
     description = "application port"
-    default = 443
+}
+
+variable "client_main_region_vpc_id" {
+    description = "client main region vpc id"
 }
 
 variable "bastionhost_ami" {

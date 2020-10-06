@@ -3,6 +3,11 @@ variable "region" {
     type = string
 }
 
+variable "key_name" {
+  default = "aws_humble_pig"
+}
+variable "testPubKey" {}
+
 variable "vpc_tags" {
   description = "Tags to apply to resources created by VPC module"
   
@@ -33,7 +38,18 @@ variable "vpc_private_subnets" {
   type = list(string)
 }
 
+variable "vpc_public_subnets" {
+  description = "Public subnets for VPC"
+  type = list(string)
+}
+
 variable "app_port"{
     description = "application port"
-    default = 443
+}
+variable "app_endpoint_svc_name"{
+  description = "app endpoint service name"
+}
+
+variable "bastionhost_ami" {
+  description = "bastionhost ami"
 }
