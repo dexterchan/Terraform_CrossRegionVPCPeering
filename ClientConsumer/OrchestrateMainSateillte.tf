@@ -43,5 +43,21 @@ module "main" {
     #Generic
     app_port=var.app_port
     app_endpoint_svc_name=var.app_endpoint_svc_name
+}
 
+module "satellite" {
+    providers = {
+        aws = aws.sat
+    }
+
+    source="./SatelliteRegion"
+    sat_region=var.sat_region
+    sat_key_name=var.sat_key_name
+    sat_testPubKey=var.sat_testPubKey
+    sat_vpc_cidr=var.sat_vpc_cidr
+    sat_vpc_name=var.sat_vpc_name
+    sat_vpc_azs = var.sat_vpc_azs
+    sat_vpc_public_subnets = var.sat_vpc_public_subnets
+    sat_vpc_private_subnets = var.sat_vpc_private_subnets
+    sat_bastionhost_ami=var.sat_bastionhost_ami
 }
