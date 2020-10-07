@@ -20,10 +20,6 @@
       {
         "name": "BBG_CLIENTCERT_KEYID",
         "value": "/mktsvc/dev/BBG_CLIENTCERT_PWD"
-      },
-      {
-        "name": "BBGDATA",
-        "value": "N"
       }
     ],
     "mountPoints": [],
