@@ -34,8 +34,6 @@ module "ecs-private-cluster" {
     aws_security_group.vpc-endpoint-sg.id
   ]
 
-  ssl_certificate_arn = var.ssl_certificate_arn
-
   task_docker_image = var.task_docker_image
 
   

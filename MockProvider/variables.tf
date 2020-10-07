@@ -33,25 +33,10 @@ variable "vpc_tags" {
   description = "Tags to apply to resources created by VPC module"
 }
 
-variable "bastionhost_ami" {
-  description = "bastionhost ami"
-}
-
-variable "ec2_ami" {
-  description = "ec2 ami"
-}
-
 variable "numOfWebAppInstances" {
   description = "number of webapp"
 }
 
-variable "ASG_role_arn" {
-  description = "Auto Scaling Group ARN"
-}
-
-variable "ssl_certificate_arn" {
-  description = "arn of SSL certificate"
-}
 
 variable "min_size" {
   description = "min size"

@@ -24,7 +24,12 @@ variable "main_vpc_name" {
 }
 
 variable "main_vpc_cidr" {
-  description = "CIDR block for VPC"
+  description = "Main CIDR block for VPC"
+  type = string
+}
+
+variable "sat_vpc_cidr" {
+  description = "Satellite CIDR block for VPC"
   type = string
 }
 

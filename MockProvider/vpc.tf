@@ -20,18 +20,25 @@ resource "aws_security_group" "web-dmz" {
   name        = "web-dmz"
   description = "Allow HTTP/HTTPS inbound traffic"
   vpc_id      = module.vpc.vpc_id
-
+/*
   ingress {
-    description = "SSH from VPC"
+    description = "http from VPC"
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-    description = "SSH from VPC"
+    description = "https from VPC"
     from_port   = 443
     to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }*/
+  ingress {
+    description = "tcp from VPC"
+    from_port   = 8194
+    to_port     = 8194
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }

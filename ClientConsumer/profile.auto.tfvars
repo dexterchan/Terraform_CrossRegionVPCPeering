@@ -27,9 +27,9 @@ sat_vpc_private_subnets = ["10.10.1.0/24", "10.10.2.0/24"]
 sat_bastionhost_ami="ami-0e306788ff2473ccb"
 
 #Generic
-app_port=80
+app_port=8194
 
-app_endpoint_svc_name="com.amazonaws.vpce.us-west-2.vpce-svc-03377823dcc6cb905"
+app_endpoint_svc_name="com.amazonaws.vpce.us-west-2.vpce-svc-09c04c40432fd9b4c"
 
 
 #S3 log bucket

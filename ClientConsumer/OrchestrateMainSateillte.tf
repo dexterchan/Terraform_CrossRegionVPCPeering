@@ -41,6 +41,8 @@ module "main" {
     main_vpc_flow_log_name = var.main_vpc_flow_log_name
 
     s3_vpc_endpoint_log_arn = var.s3_vpc_endpoint_log_arn
+
+    sat_vpc_cidr=var.sat_vpc_cidr
     
     #Generic
     app_port=var.app_port
