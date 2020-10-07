@@ -20,3 +20,10 @@ resource "aws_flow_log" "main_vpc_flow_log" {
   traffic_type    = "ALL"
   vpc_id          = module.vpc.vpc_id
 }
+
+resource "aws_flow_log" "s3_bucket_log" {
+  log_destination      = var.s3_vpc_endpoint_log_arn
+  log_destination_type = "s3"
+  traffic_type         = "ALL"
+  vpc_id               = module.vpc.vpc_id
+}

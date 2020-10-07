@@ -62,6 +62,10 @@ variable "main_vpc_flow_log_name" {
   type = string
 }
 
+variable "s3_vpc_endpoint_log_arn"{
+  description = "arn s3 bucket maintaining vpc endpoint log"
+  type = string
+}
 
 variable "sat_region" {
     type = string

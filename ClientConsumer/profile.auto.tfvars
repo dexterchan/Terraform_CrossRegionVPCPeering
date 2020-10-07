@@ -30,3 +30,7 @@ sat_bastionhost_ami="ami-0e306788ff2473ccb"
 app_port=80
 
 app_endpoint_svc_name="com.amazonaws.vpce.us-west-2.vpce-svc-03377823dcc6cb905"
+
+
+#S3 log bucket
+s3_vpc_endpoint_log_arn = "arn:aws:s3:::boargcp-vpcendpointlog"

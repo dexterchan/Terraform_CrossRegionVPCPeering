@@ -40,6 +40,8 @@ module "main" {
 
     main_vpc_flow_log_name = var.main_vpc_flow_log_name
 
+    s3_vpc_endpoint_log_arn = var.s3_vpc_endpoint_log_arn
+    
     #Generic
     app_port=var.app_port
     app_endpoint_svc_name=var.app_endpoint_svc_name
