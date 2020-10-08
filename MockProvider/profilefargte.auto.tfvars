@@ -19,7 +19,7 @@ vpc_tags={
 
 # task docker image
 task_docker_image="192592784707.dkr.ecr.us-west-2.amazonaws.com/marketservice-sse:rc.java"
-
+vpc_endpointsvc_allowed_principals=["arn:aws:iam::119217677828:user/TerraformDeploy"]
 
 min_size=1
 max_size=10

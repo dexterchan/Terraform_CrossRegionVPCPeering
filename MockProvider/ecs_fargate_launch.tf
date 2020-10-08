@@ -36,5 +36,6 @@ module "ecs-private-cluster" {
 
   task_docker_image = var.task_docker_image
 
+  vpc_endpointsvc_allowed_principals = var.vpc_endpointsvc_allowed_principals
   
 }

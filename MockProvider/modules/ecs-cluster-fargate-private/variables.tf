@@ -68,5 +68,5 @@ variable "task_docker_image" {
 
 variable "vpc_endpointsvc_allowed_principals"{
   description = "vpc endpoint allowed principals"
-  default = ["arn:aws:iam::119217677828:user/TerraformDeploy"]
+  type = list(string)
 }

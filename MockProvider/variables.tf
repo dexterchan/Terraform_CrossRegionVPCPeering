@@ -1,8 +1,8 @@
 variable "region" {
-  default = "us-west-2"
+  type = string
 }
 variable "key_name" {
-  default = "aws_humble_pig"
+  type = string
 }
 variable "testPubKey" {}
 
@@ -50,4 +50,9 @@ variable "max_size" {
 
 variable "task_docker_image" {
   description = "task docker image"
+}
+
+variable "vpc_endpointsvc_allowed_principals"{
+  description = "vpc endpoint allowed principals"
+  type = list(string)
 }
