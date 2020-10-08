@@ -1,5 +1,5 @@
 variable "main_region" {
-    default = "us-west-2"
+    default = "us-east-1"
     type = string
 }
 

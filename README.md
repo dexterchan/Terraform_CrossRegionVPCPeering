@@ -51,11 +51,15 @@ Implement the AWS setup of AWS PrivateLink
 DNS name of the VPC endpoint service (PrivateLink) for connection in main region
 app_endpoint_svc_name="com.amazonaws.vpce.us-west-2.vpce-svc-09c04c40432fd9b4c"
 
+**S3 vpc endpoint log bucket**
+ARN of S3 bucket as log data sink of vpc endpoint traffic
+s3_vpc_endpoint_log_arn = "arn:aws:s3:::boargcp-vpcendpointlog"
+
 **Run Command**
 ```
 cd ClientConsumer
 export VPC_SERVICE_NAME=<vpc endpoint service name e.g. com.amazonaws.vpce.us-west-2.vpce-svc-013983b5873316d7c>
-export
+
 #Setup the vpc endpoint for main region and network for both region first
 terraform apply -target module.main -target module.satellite \
 -var "app_endpoint_svc_name=${VPC_SERVICE_NAME}"
@@ -104,6 +108,28 @@ curl -X GET '<vpc end point dns name>:8194/blp/mktdata?token=JWT1&sessionId=sess
 
 **Expected result**
 Streaming market data with HTTP Server Side Emit (SSE)
+```
+id:XAUUSD Curncy-1602139886640
+event:XAUUSD Curncy-1602139886640-BID,
+data:{"timestamp_ms":1602139886640,"mktdatacode":"XAUUSD Curncy","responseStatus":"OK","message":null,"valuesMap":{"BID":1893.44}}
+
+id:XAUUSD Curncy-1602139886669
+event:XAUUSD Curncy-1602139886669-ASK,
+data:{"timestamp_ms":1602139886669,"mktdatacode":"XAUUSD Curncy","responseStatus":"OK","message":null,"valuesMap":{"ASK":1894.2}}
+
+id:null-1602139886715
+event:null-1602139886715-
+data:{"timestamp_ms":1602139886715,"mktdatacode":null,"responseStatus":"EXPIRED","message":"sessionid1 session is not valid now","valuesMap":{}}
+```
+
+
+### Monitor VPC endpoint traffic with cloud watch ###
+Monitor the VPC endpoint traffic.
+First, we get the eni id
+![get eni of VPC endpoint](./images/vpc-endpoingeniexample.png)
+Then, we go to cloud watch
+query the eni id
+![cloudwatch - query eni id](./images/vpc-endpointlog.png)
 
 ### Clean up ###
 Clean ClientConsumer
