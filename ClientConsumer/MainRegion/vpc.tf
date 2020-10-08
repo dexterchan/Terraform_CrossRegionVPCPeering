@@ -78,7 +78,7 @@ resource "aws_security_group" "webapp_tcp" {
     from_port   = var.app_port
     to_port     = var.app_port
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [var.sat_vpc_cidr]
   }
 
   egress {

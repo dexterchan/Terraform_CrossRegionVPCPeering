@@ -61,9 +61,6 @@ variable "desired_capacity" {
   description = "desired capacity"
 }
 
-variable "ssl_certificate_arn" {
-  description = "arn of ssl certificate"
-}
 
 variable "task_docker_image" {
   description = "task docker image"
@@ -71,5 +68,5 @@ variable "task_docker_image" {
 
 variable "vpc_endpointsvc_allowed_principals"{
   description = "vpc endpoint allowed principals"
-  default = ["arn:aws:iam::119217677828:user/TerraformDeploy"]
+  type = list(string)
 }
