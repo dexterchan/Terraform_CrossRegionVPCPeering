@@ -104,7 +104,19 @@ curl -X GET '<vpc end point dns name>:8194/blp/mktdata?token=JWT1&sessionId=sess
 
 **Expected result**
 Streaming market data with HTTP Server Side Emit (SSE)
+```
+id:XAUUSD Curncy-1602139886640
+event:XAUUSD Curncy-1602139886640-BID,
+data:{"timestamp_ms":1602139886640,"mktdatacode":"XAUUSD Curncy","responseStatus":"OK","message":null,"valuesMap":{"BID":1893.44}}
 
+id:XAUUSD Curncy-1602139886669
+event:XAUUSD Curncy-1602139886669-ASK,
+data:{"timestamp_ms":1602139886669,"mktdatacode":"XAUUSD Curncy","responseStatus":"OK","message":null,"valuesMap":{"ASK":1894.2}}
+
+id:null-1602139886715
+event:null-1602139886715-
+data:{"timestamp_ms":1602139886715,"mktdatacode":null,"responseStatus":"EXPIRED","message":"sessionid1 session is not valid now","valuesMap":{}}
+```
 ### Clean up ###
 Clean ClientConsumer
 ```
