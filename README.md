@@ -141,7 +141,7 @@ Clean ClientConsumer
 ```
 cd ClientConsumer
 terraform destroy
-<note type any value twice to skip the vpc endpoint names>
+<note type any value four times to skip the vpc endpoint names>
 
 cd MockProvider
 terraform destroy
