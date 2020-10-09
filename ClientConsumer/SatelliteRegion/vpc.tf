@@ -66,3 +66,28 @@ resource "aws_security_group" "bastion_ssh_private" {
     Name = "allow_private_ssh"
   }
 }
+
+
+resource "aws_security_group" "vpc-endpoint-sg" {
+  name        = "vpc-endpoint-sg"
+  description = "Allow intra HTTP/HTTPS traffic"
+  vpc_id      = module.vpc.vpc_id
+
+  ingress {
+    description     = "comm within VPC"
+    from_port       = 443
+    to_port         = 443
+    protocol        = "tcp"
+    cidr_blocks = [ var.sat_vpc_cidr ]
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "vpc-endpoint-sg"
+  }
+}

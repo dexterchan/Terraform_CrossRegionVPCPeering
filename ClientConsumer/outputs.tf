@@ -7,10 +7,11 @@ output "secondary_mkt_service_vpc_endpoint_dns_address" {
   value       = module.main.secondary_mkt_service_vpc_endpoint_dns_address
 }
 
-output "bastionhost_publicip"{
-  value = module.satellite.bastionhost_publicip
-}
 
 output "privateAppServer_privateip"{
   value = module.satellite.privateAppServer_privateip
+}
+
+output "privateAppServer_instanceId"{
+  value = module.satellite.privateAppServer_instanceId
 }

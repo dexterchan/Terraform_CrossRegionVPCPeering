@@ -40,7 +40,8 @@ terraform apply
 Outputs:
 ```
 nlb_address = <load balancer dns name e.g. load-balancer-dd9cbd4dd36c99b8.elb.us-west-2.amazonaws.com>
-vpc_endpoint_service_mktsvc_service_name = <vpc endpoint service name e.g. com.amazonaws.vpce.us-west-2.vpce-svc-013983b5873316d7c>
+VPC_PRIMARY_SERVICE_NAME = <primary vpc endpoint service name e.g. com.amazonaws.vpce.us-east-1.vpce-svc-02c793cdda772424f>
+VPC_SECONDARY_SERVICE_NAME = <secondary vpc endpoint service name e.g. com.amazonaws.vpce.us-east-1.vpce-svc-077e904bd2a82dae4>
 ```
 
 ## ClientConsumer ###

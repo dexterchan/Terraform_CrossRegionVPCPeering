@@ -6,7 +6,7 @@ resource "aws_key_pair" "deployer" {
   public_key = var.sat_testPubKey
 }
 
-
+/*
 resource "aws_instance" "bastion" {
   key_name      = aws_key_pair.deployer.key_name
   ami           = var.sat_bastionhost_ami
@@ -19,7 +19,7 @@ resource "aws_instance" "bastion" {
     Environment = "dev"
     Name = "bastion"
   }
-}
+}*/
 
 resource "aws_iam_instance_profile" "instance_profile" {
   name = "satellite_instance_profile"
