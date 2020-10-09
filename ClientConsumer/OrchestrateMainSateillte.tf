@@ -46,7 +46,8 @@ module "main" {
     
     #Generic
     app_port=var.app_port
-    app_endpoint_svc_name=var.app_endpoint_svc_name
+    app_primary_endpoint_svc_name=var.app_primary_endpoint_svc_name
+    app_secondary_endpoint_svc_name=var.app_secondary_endpoint_svc_name
 }
 
 module "satellite" {

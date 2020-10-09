@@ -1,6 +1,11 @@
-output "mkt_service_vpc_endpoint_dns_address" {
-  description = "mkt service vpc endpoint address"
-  value       = aws_vpc_endpoint.webmkt_service.dns_entry
+output "primary_mkt_service_vpc_endpoint_dns_address" {
+  description = "primary mkt service vpc endpoint address"
+  value       = aws_vpc_endpoint.primary_webmkt_service.dns_entry
+}
+
+output "secondary_mkt_service_vpc_endpoint_dns_address" {
+  description = "secondary mkt service vpc endpoint address"
+  value       = aws_vpc_endpoint.secondary_webmkt_service.dns_entry
 }
 
 output "main_region_vpc_id" {

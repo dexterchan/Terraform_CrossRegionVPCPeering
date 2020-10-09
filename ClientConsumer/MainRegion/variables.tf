@@ -52,8 +52,12 @@ variable "app_port"{
     description = "application port"
 }
 
-variable "app_endpoint_svc_name"{
-  description = "app endpoint service name"
+variable "app_primary_endpoint_svc_name"{
+  description = "app primary endpoint service name"
+}
+
+variable "app_secondary_endpoint_svc_name"{
+  description = "app secondary endpoint service name"
 }
 
 variable "main_vpc_flow_log_name" {

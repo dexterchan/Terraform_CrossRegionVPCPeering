@@ -49,7 +49,7 @@ Implement the AWS setup of AWS PrivateLink
 
 **VPC Endpoint Service (PrivateLink) dns name**
 DNS name of the VPC endpoint service (PrivateLink) for connection in main region
-app_endpoint_svc_name="com.amazonaws.vpce.us-west-2.vpce-svc-09c04c40432fd9b4c"
+app_primary_endpoint_svc_name="com.amazonaws.vpce.us-west-2.vpce-svc-09c04c40432fd9b4c"
 
 **S3 vpc endpoint log bucket**
 ARN of S3 bucket as log data sink of vpc endpoint traffic
@@ -58,15 +58,19 @@ s3_vpc_endpoint_log_arn = "arn:aws:s3:::boargcp-vpcendpointlog"
 **Run Command**
 ```
 cd ClientConsumer
-export VPC_SERVICE_NAME=<vpc endpoint service name e.g. com.amazonaws.vpce.us-west-2.vpce-svc-013983b5873316d7c>
+export VPC_PRIMARY_SERVICE_NAME=<vpc endpoint primary service name e.g. com.amazonaws.vpce.us-east-1.vpce-svc-0c078abf59c16d2a0>
+export VPC_SECONDARY_SERVICE_NAME=<vpc endpoint secondary service name e.g. com.amazonaws.vpce.us-east-1.vpce-svc-0b2948573a91a6ddf>
 
 #Setup the vpc endpoint for main region and network for both region first
 terraform apply -target module.main -target module.satellite \
--var "app_endpoint_svc_name=${VPC_SERVICE_NAME}"
+-var "app_primary_endpoint_svc_name=${VPC_PRIMARY_SERVICE_NAME}" \
+-var "app_secondary_endpoint_svc_name=${VPC_SECONDARY_SERVICE_NAME}"
 
 #setup vpc peering
-terraform apply -var "app_endpoint_svc_name=${VPC_SERVICE_NAME}"
+terraform apply -var "app_primary_endpoint_svc_name=${VPC_PRIMARY_SERVICE_NAME}" \
+-var "app_secondary_endpoint_svc_name=${VPC_SECONDARY_SERVICE_NAME}"
 ```
+
 **Expected output**
 DNS names of vpc endpoint for connections.
 
@@ -91,7 +95,7 @@ mkt_service_vpc_endpoint_dns_address = [
 You will find state "Pending Acceptance" in the EndPoint service from AWS console
 ![Seek Approval](./images/await_approval_endpoint_connection.png)
 After approval, you find the state changing to "Pending"
-![Approved](./images/await_approval_endpoint_connection.png)
+![Approved](./images/approved_endpoint_connection.png)
 Wait until the state turning to "Available"
 
 ### <u>Testing</u>
@@ -136,6 +140,7 @@ Clean ClientConsumer
 ```
 cd ClientConsumer
 terraform destroy
+<note type any value twice to skip the vpc endpoint names>
 
 cd MockProvider
 terraform destroy
