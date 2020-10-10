@@ -19,6 +19,9 @@ variable "vpc_cidr" {
 variable "vpc_private_subnets" {
   description = "Private subnets for VPC"
 }
+variable "vpc_endpoint_subnets"{
+  description = "VPC endpoint deployment subnets"
+}
 
 variable "vpc_public_subnets" {
   description = "Public subnets for VPC"

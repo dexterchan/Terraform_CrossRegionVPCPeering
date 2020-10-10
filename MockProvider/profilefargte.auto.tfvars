@@ -8,6 +8,7 @@ vpc_azs=["us-east-1a", "us-east-1b"]
 vpc_cidr="192.168.0.0/16"
 vpc_public_subnets=["192.168.1.0/24","192.168.2.0/24"]
 vpc_private_subnets=["192.168.101.0/24", "192.168.102.0/24","192.168.103.0/24"]
+vpc_endpoint_subnets = ["192.168.103.0/24"]
 #vpc_private_asg_subnets=["192.168.101.0/24", "192.168.201.0/24"]
 #vpc_private_endpoint_subnets=["192.168.301.0/24"]
 vpc_enable_nat_gateway=false

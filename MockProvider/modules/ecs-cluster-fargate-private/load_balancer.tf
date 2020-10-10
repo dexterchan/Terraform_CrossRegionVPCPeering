@@ -1,5 +1,5 @@
 resource "aws_lb" "fargate" {
-  name               = "load-balancer"
+  name               = "nlb-${var.ecs_cluster_name}"
   subnets            = var.lb_subnets
   load_balancer_type = "network"
   internal           = true
@@ -43,7 +43,7 @@ resource "aws_lb_listener" "tcp_app_forward" {
 }
 
 resource "aws_lb_target_group" "fargate" {
-  name        = "webapp-lb-tg"
+  name        = "${var.ecs_cluster_name}-tg"
   port        = 8194
   protocol    = "TCP"
   vpc_id      = var.vpc_id

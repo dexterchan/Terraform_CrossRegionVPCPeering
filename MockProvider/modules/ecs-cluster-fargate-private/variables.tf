@@ -16,10 +16,6 @@ variable "launch_config_security_group" {
   description = "launch config security group id list"
 }
 
-variable "vpc-endpoint_security_group" {
-  description = "vpc endpoint security group"
-}
-
 variable "vpc_id" {
   description = "vpc_id"
 }
@@ -39,14 +35,6 @@ variable "lb_subnets" {
 
 variable "asg_subnets" {
   description = "asg subnets"
-}
-
-variable "endpoint_subnets" {
-  description = "endpoint subnets"
-}
-
-variable "asg_route_table_ids" {
-  description = "asg route table ids"
 }
 
 variable "min_size" {
@@ -69,4 +57,14 @@ variable "task_docker_image" {
 variable "vpc_endpointsvc_allowed_principals"{
   description = "vpc endpoint allowed principals"
   type = list(string)
+}
+
+variable "ecs_task_app_execution_role-arn"{
+  description = "ecs_task_app_execution_role arn"
+  type = string
+}
+
+variable "ecs_terraform_taskexecution_role-arn"{
+  description = "ecs_terraform_taskexecution_role arn"
+  type = string
 }
