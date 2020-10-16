@@ -50,6 +50,12 @@ variable "main_vpc_public_subnets" {
 
 variable "app_port"{
     description = "application port"
+    type = number
+}
+
+variable "web_port"{
+    description = "web application port"
+    type = number
 }
 
 variable "app_primary_endpoint_svc_name"{

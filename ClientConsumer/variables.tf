@@ -48,6 +48,11 @@ variable "app_port"{
     type = number
 }
 
+variable "web_port"{
+    description = "web application port"
+    type = number
+}
+
 variable "app_primary_endpoint_svc_name"{
     description = "app primary endpoint service name"
     type = string

@@ -2,7 +2,7 @@
   {
     "name": "${app}",
     "image": "${task_docker_image}",
-    "cpu": 128,
+    "cpu": 256,
     "memory": 512,
     "links": [],
     "portMappings": [
@@ -22,7 +22,7 @@
       },
       {
         "name": "BBGDATA",
-        "value": "N"
+        "value": "Y"
       }
     ],
     "mountPoints": [],

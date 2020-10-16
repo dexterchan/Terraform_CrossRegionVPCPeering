@@ -17,3 +17,8 @@ output "main_region_private_route_table_id" {
   description = "client main region private route table id"
   value       = module.vpc.private_route_table_ids
 }
+
+output "subnet_id" {
+  description = "subnet id"
+  value       = module.vpc.private_subnets
+}

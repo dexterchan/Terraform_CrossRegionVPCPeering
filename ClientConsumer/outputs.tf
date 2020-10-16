@@ -15,3 +15,11 @@ output "privateAppServer_privateip"{
 output "privateAppServer_instanceId"{
   value = module.satellite.privateAppServer_instanceId
 }
+
+output "main_subnetids"{
+  value = module.main.subnet_id
+}
+
+output "satellite_subnetids"{
+  value = module.satellite.subnet_id
+}

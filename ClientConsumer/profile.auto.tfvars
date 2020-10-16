@@ -28,6 +28,7 @@ sat_bastionhost_ami="ami-0e306788ff2473ccb"
 
 #Generic
 app_port=8194
+web_port=80
 
 #app_primary_endpoint_svc_name="com.amazonaws.vpce.us-east-1.vpce-svc-0c078abf59c16d2a0"
 #app_secondary_endpoint_svc_name="com.amazonaws.vpce.us-east-1.vpce-svc-0b2948573a91a6ddf"

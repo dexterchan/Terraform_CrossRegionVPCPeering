@@ -17,3 +17,8 @@ output "privateAppServer_privateip"{
 output "privateAppServer_instanceId"{
   value = aws_instance.testprivate.id
 }
+
+output "subnet_id" {
+  description = "subnet id"
+  value       = module.vpc.private_subnets
+}

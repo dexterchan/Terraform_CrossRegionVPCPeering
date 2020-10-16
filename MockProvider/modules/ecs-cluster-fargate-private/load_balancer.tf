@@ -8,7 +8,7 @@ resource "aws_lb" "fargate" {
     Environment = "staging"
   }
 }
-/*
+
 resource "aws_lb_listener" "http_forward" {
   load_balancer_arn = aws_lb.fargate.arn
   port              = 80
@@ -16,7 +16,7 @@ resource "aws_lb_listener" "http_forward" {
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.fargate.arn
+    target_group_arn = aws_lb_target_group.web.arn
   }
 }
 
@@ -27,9 +27,26 @@ resource "aws_lb_listener" "https_forward" {
   
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.fargate.arn
+    target_group_arn = aws_lb_target_group.web.arn
   }
-}*/
+}
+
+resource "aws_lb_target_group" "web" {
+  name        = "${var.ecs_cluster_name}-web-tg"
+  port        = 80
+  protocol    = "TCP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    interval            = "30"
+    protocol            = "TCP"
+    healthy_threshold   = 3
+    unhealthy_threshold = 3
+  }
+  
+}
+
 
 resource "aws_lb_listener" "tcp_app_forward" {
   load_balancer_arn = aws_lb.fargate.arn
@@ -38,12 +55,12 @@ resource "aws_lb_listener" "tcp_app_forward" {
   
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.fargate.arn
+    target_group_arn = aws_lb_target_group.tcp_app.arn
   }
 }
 
-resource "aws_lb_target_group" "fargate" {
-  name        = "${var.ecs_cluster_name}-tg"
+resource "aws_lb_target_group" "tcp_app" {
+  name        = "${var.ecs_cluster_name}-tcpapp-tg"
   port        = 8194
   protocol    = "TCP"
   vpc_id      = var.vpc_id
@@ -54,6 +71,7 @@ resource "aws_lb_target_group" "fargate" {
     protocol            = "TCP"
     healthy_threshold   = 3
     unhealthy_threshold = 3
+    port = 80
   }
   
 }

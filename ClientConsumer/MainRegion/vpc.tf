@@ -68,8 +68,8 @@ resource "aws_security_group" "bastion_ssh_private" {
 }
 
 
-resource "aws_security_group" "webapp_tcp" {
-  name        = "webapp_tcp"
+resource "aws_security_group" "app_tcp" {
+  name        = "app_tcp-sg"
   description = "Allow web app inbound traffic"
   vpc_id      = module.vpc.vpc_id
 
@@ -77,6 +77,31 @@ resource "aws_security_group" "webapp_tcp" {
     description = "app traffic"
     from_port   = var.app_port
     to_port     = var.app_port
+    protocol    = "tcp"
+    cidr_blocks = [var.sat_vpc_cidr]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "allow_app_traffic"
+  }
+}
+
+resource "aws_security_group" "web_tcp" {
+  name        = "web_tcp-sg"
+  description = "Allow web app inbound traffic"
+  vpc_id      = module.vpc.vpc_id
+
+  ingress {
+    description = "app traffic"
+    from_port   = var.web_port
+    to_port     = var.web_port
     protocol    = "tcp"
     cidr_blocks = [var.sat_vpc_cidr]
   }

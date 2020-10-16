@@ -50,8 +50,12 @@ variable "desired_capacity" {
 }
 
 
-variable "task_docker_image" {
-  description = "task docker image"
+variable "webapp_task_docker_image" {
+  description = "webapp task docker image"
+}
+
+variable "nginx_proxy_task_docker_image" {
+  description = "nginx proxy task docker image"
 }
 
 variable "vpc_endpointsvc_allowed_principals"{

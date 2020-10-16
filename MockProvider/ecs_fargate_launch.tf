@@ -29,8 +29,8 @@ module "ecs-private-cluster1" {
     aws_security_group.web-app.id
   ]
 
-  task_docker_image = var.task_docker_image
-
+  webapp_task_docker_image = var.webapp_task_docker_image
+  nginx_proxy_task_docker_image = var.nginx_proxy_task_docker_image
   vpc_endpointsvc_allowed_principals = var.vpc_endpointsvc_allowed_principals
   
   ecs_task_app_execution_role-arn = aws_iam_role.ecs_task_app_execution_role.arn
@@ -68,8 +68,8 @@ module "ecs-private-cluster2" {
     aws_security_group.web-app.id
   ]
 
-  task_docker_image = var.task_docker_image
-
+  webapp_task_docker_image = var.webapp_task_docker_image
+  nginx_proxy_task_docker_image = var.nginx_proxy_task_docker_image
   vpc_endpointsvc_allowed_principals = var.vpc_endpointsvc_allowed_principals
   
   ecs_task_app_execution_role-arn = aws_iam_role.ecs_task_app_execution_role.arn

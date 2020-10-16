@@ -6,7 +6,8 @@ resource "aws_vpc_endpoint" "primary_webmkt_service" {
   vpc_endpoint_type = "Interface"
 
   security_group_ids = [
-    aws_security_group.webapp_tcp.id,
+    aws_security_group.app_tcp.id,
+    aws_security_group.web_tcp.id
   ]
 
   subnet_ids          = module.vpc.private_subnets
@@ -21,7 +22,8 @@ resource "aws_vpc_endpoint" "secondary_webmkt_service" {
   vpc_endpoint_type = "Interface"
 
   security_group_ids = [
-    aws_security_group.webapp_tcp.id,
+    aws_security_group.app_tcp.id,
+    aws_security_group.web_tcp.id
   ]
 
   subnet_ids          = module.vpc.private_subnets

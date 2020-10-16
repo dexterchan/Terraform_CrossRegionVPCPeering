@@ -11,7 +11,7 @@ vpc_private_subnets=["192.168.101.0/24", "192.168.102.0/24","192.168.103.0/24"]
 vpc_endpoint_subnets = ["192.168.103.0/24"]
 #vpc_private_asg_subnets=["192.168.101.0/24", "192.168.201.0/24"]
 #vpc_private_endpoint_subnets=["192.168.301.0/24"]
-vpc_enable_nat_gateway=false
+vpc_enable_nat_gateway=true
 vpc_tags={
     Terraform   = "true"
     Environment = "dev"
@@ -19,7 +19,8 @@ vpc_tags={
 
 
 # task docker image
-task_docker_image="192592784707.dkr.ecr.us-east-1.amazonaws.com/marketservice-sse:rc.java"
+webapp_task_docker_image="192592784707.dkr.ecr.us-east-1.amazonaws.com/marketservice-sse:rc.java"
+nginx_proxy_task_docker_image="192592784707.dkr.ecr.us-east-1.amazonaws.com/bpipe-appliance-proxy:v0.alpine"
 vpc_endpointsvc_allowed_principals=["arn:aws:iam::119217677828:user/TerraformDeploy"]
 
 min_size=1
