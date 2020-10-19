@@ -78,7 +78,7 @@ resource "aws_security_group" "app_tcp" {
     from_port   = var.app_port
     to_port     = var.app_port
     protocol    = "tcp"
-    cidr_blocks = [var.sat_vpc_cidr]
+    cidr_blocks = [var.sat_vpc_cidr, var.main_vpc_cidr]
   }
 
   egress {
@@ -103,7 +103,7 @@ resource "aws_security_group" "web_tcp" {
     from_port   = var.web_port
     to_port     = var.web_port
     protocol    = "tcp"
-    cidr_blocks = [var.sat_vpc_cidr]
+    cidr_blocks = [var.sat_vpc_cidr, var.main_vpc_cidr]
   }
 
   egress {
