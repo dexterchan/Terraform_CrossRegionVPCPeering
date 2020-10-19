@@ -68,3 +68,13 @@ resource "aws_vpc_endpoint" "kms" {
   subnet_ids          = local.endpoint_subnets
   private_dns_enabled = true
 }
+
+resource "aws_vpc_endpoint" "cloudwatch_monitoring" {
+  vpc_id            = local.vpc_id
+  service_name      = "com.amazonaws.${local.region}.monitoring"
+  vpc_endpoint_type = "Interface"
+
+  security_group_ids  = [aws_security_group.canary_aws_endpoints.id]
+  subnet_ids          = local.endpoint_subnets
+  private_dns_enabled = true
+}

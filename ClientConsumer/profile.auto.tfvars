@@ -24,7 +24,8 @@ sat_vpc_azs = ["ap-south-1a", "ap-south-1b"]
 sat_vpc_public_subnets = ["10.10.11.0/24", "10.10.12.0/24"]
 sat_vpc_private_subnets = ["10.10.1.0/24", "10.10.2.0/24"]
 
-sat_bastionhost_ami="ami-0e306788ff2473ccb"
+sat_bastionhost_ami="ami-0ba6a4f5e1ef8e106"
+//"ami-0e306788ff2473ccb"
 
 #Generic
 app_port=8194
