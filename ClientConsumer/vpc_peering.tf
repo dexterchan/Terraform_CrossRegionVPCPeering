@@ -1,9 +1,9 @@
 
-resource "aws_vpc_peering_connection" "satellite" {
-  provider                  = aws.sat
-  peer_vpc_id   = module.main.region_vpc_id
-  vpc_id        = module.satellite.region_vpc_id
-  peer_region = var.main_region
+resource "aws_vpc_peering_connection" "original" {
+  provider                  = aws.org
+  peer_vpc_id   = module.remote.region_vpc_id
+  vpc_id        = module.original.region_vpc_id
+  peer_region = var.remote_region
   auto_accept   = false
   tags = {
     Side = "Requester"
@@ -11,9 +11,9 @@ resource "aws_vpc_peering_connection" "satellite" {
 }
 
 # Accepter's side of the connection.
-resource "aws_vpc_peering_connection_accepter" "main" {
-  provider                  = aws.main
-  vpc_peering_connection_id = aws_vpc_peering_connection.satellite.id
+resource "aws_vpc_peering_connection_accepter" "remote" {
+  provider                  = aws.remote
+  vpc_peering_connection_id = aws_vpc_peering_connection.original.id
   auto_accept               = true
 
   tags = {
@@ -21,33 +21,33 @@ resource "aws_vpc_peering_connection_accepter" "main" {
   }
 }
 
-data "aws_vpc" "main" {
-  provider  = aws.main
-  id = module.main.region_vpc_id
+data "aws_vpc" "remote" {
+  provider  = aws.remote
+  id = module.remote.region_vpc_id
 }
 
-data "aws_vpc" "satellite" {
-  provider  = aws.sat
-  id = module.satellite.region_vpc_id
+data "aws_vpc" "original" {
+  provider  = aws.org
+  id = module.original.region_vpc_id
 }
 
 #Route table update
 
 
-resource "aws_route" "satellite_route_main" {
-  provider  = aws.sat
-  for_each  = toset(module.satellite.region_private_route_table_id)
+resource "aws_route" "original_route_remote" {
+  provider  = aws.org
+  for_each  = toset(module.original.region_private_route_table_id)
   route_table_id            = each.value
-  destination_cidr_block    = data.aws_vpc.main.cidr_block
-  vpc_peering_connection_id = aws_vpc_peering_connection.satellite.id
-  depends_on                = [module.satellite]
+  destination_cidr_block    = data.aws_vpc.remote.cidr_block
+  vpc_peering_connection_id = aws_vpc_peering_connection.original.id
+  depends_on                = [module.original]
 }
 
-resource "aws_route" "main_route_satellite" {
-  provider  = aws.main
-  for_each  = toset(module.main.region_private_route_table_id)
+resource "aws_route" "remote_route_original" {
+  provider  = aws.remote
+  for_each  = toset(module.remote.region_private_route_table_id)
   route_table_id            = each.value
-  destination_cidr_block    = data.aws_vpc.satellite.cidr_block
-  vpc_peering_connection_id = aws_vpc_peering_connection.satellite.id
-  depends_on                = [module.satellite]
+  destination_cidr_block    = data.aws_vpc.original.cidr_block
+  vpc_peering_connection_id = aws_vpc_peering_connection.original.id
+  depends_on                = [module.original]
 }
