@@ -2,17 +2,17 @@
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
 
-  name = var.sat_vpc_name
-  cidr = var.sat_vpc_cidr
+  name = var.vpc_name
+  cidr = var.vpc_cidr
 
-  azs             = var.sat_vpc_azs
-  public_subnets = var.sat_vpc_public_subnets
-  private_subnets = var.sat_vpc_private_subnets
+  azs             = var.vpc_azs
+  public_subnets = var.vpc_public_subnets
+  private_subnets = var.vpc_private_subnets
   
   enable_nat_gateway = false
   enable_dns_hostnames = true
   enable_dns_support   = true
-  tags = var.sat_vpc_tags
+  tags = var.vpc_tags
 }
 
 
@@ -78,7 +78,7 @@ resource "aws_security_group" "vpc-endpoint-sg" {
     from_port       = 443
     to_port         = 443
     protocol        = "tcp"
-    cidr_blocks = [ var.sat_vpc_cidr ]
+    cidr_blocks = [ var.vpc_cidr ]
   }
   egress {
     from_port   = 0

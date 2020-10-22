@@ -26,23 +26,23 @@ module "main" {
     }
     source = "./MainRegion"
 
-    main_key_name=var.main_key_name
-    main_testPubKey=var.main_testPubKey
+   key_name=var.main_key_name
+   testPubKey=var.main_testPubKey
 
     #Main region parameters
-    main_region=var.main_region
-    main_vpc_cidr=var.main_vpc_cidr
-    main_vpc_name=var.main_vpc_name
-    main_vpc_azs = var.main_vpc_azs
-    main_vpc_public_subnets = var.main_vpc_public_subnets
-    main_vpc_private_subnets = var.main_vpc_private_subnets
-    main_bastionhost_ami=var.main_bastionhost_ami
+   region=var.main_region
+   vpc_cidr=var.main_vpc_cidr
+   vpc_name=var.main_vpc_name
+   vpc_azs = var.main_vpc_azs
+   vpc_public_subnets = var.main_vpc_public_subnets
+   vpc_private_subnets = var.main_vpc_private_subnets
+   bastionhost_ami=var.main_bastionhost_ami
 
-    main_vpc_flow_log_name = var.main_vpc_flow_log_name
+   vpc_flow_log_name = var.main_vpc_flow_log_name
 
     s3_vpc_endpoint_log_arn = var.s3_vpc_endpoint_log_arn
 
-    sat_vpc_cidr=var.sat_vpc_cidr
+    org_vpc_cidr=var.sat_vpc_cidr
     
     #Generic
     app_port=var.app_port
@@ -57,13 +57,13 @@ module "satellite" {
     }
 
     source="./SatelliteRegion"
-    sat_region=var.sat_region
-    sat_key_name=var.sat_key_name
-    sat_testPubKey=var.sat_testPubKey
-    sat_vpc_cidr=var.sat_vpc_cidr
-    sat_vpc_name=var.sat_vpc_name
-    sat_vpc_azs = var.sat_vpc_azs
-    sat_vpc_public_subnets = var.sat_vpc_public_subnets
-    sat_vpc_private_subnets = var.sat_vpc_private_subnets
-    sat_bastionhost_ami=var.sat_bastionhost_ami
+    region=var.sat_region
+    
+    
+    vpc_cidr=var.sat_vpc_cidr
+    vpc_name=var.sat_vpc_name
+    vpc_azs = var.sat_vpc_azs
+    vpc_public_subnets = var.sat_vpc_public_subnets
+    vpc_private_subnets = var.sat_vpc_private_subnets
+    bastionhost_ami=var.sat_bastionhost_ami
 }

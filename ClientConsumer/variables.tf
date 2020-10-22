@@ -83,11 +83,6 @@ variable "sat_region" {
 }
 
 
-variable "sat_key_name" {
-  type = string
-}
-variable "sat_testPubKey" {}
-
 
 variable "sat_vpc_tags" {
   description = "Tags to apply to resources created by VPC module"

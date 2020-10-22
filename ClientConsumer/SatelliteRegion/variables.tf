@@ -1,15 +1,15 @@
-variable "sat_region" {
+variable "region" {
     type = string
 }
 
 
-variable "sat_key_name" {
+variable "key_name" {
   type = string
 }
-variable "sat_testPubKey" {}
 
 
-variable "sat_vpc_tags" {
+
+variable "vpc_tags" {
   description = "Tags to apply to resources created by VPC module"
   
   default     = {
@@ -19,27 +19,27 @@ variable "sat_vpc_tags" {
   }
 }
 
-variable "sat_vpc_name" {
+variable "vpc_name" {
   description = "Name of VPC"
   type = string
 }
 
-variable "sat_vpc_cidr" {
+variable "vpc_cidr" {
   description = "CIDR block for VPC"
   type = string
 }
 
-variable "sat_vpc_azs" {
+variable "vpc_azs" {
   description = "Availability zones for VPC"
   type = list(string)
 }
 
-variable "sat_vpc_private_subnets" {
+variable "vpc_private_subnets" {
   description = "Private subnets for VPC"
   type = list(string)
 }
 
-variable "sat_vpc_public_subnets" {
+variable "vpc_public_subnets" {
   description = "Public subnets for VPC"
   type = list(string)
 }
@@ -47,6 +47,6 @@ variable "sat_vpc_public_subnets" {
 
 
 
-variable "sat_bastionhost_ami" {
+variable "bastionhost_ami" {
   description = "bastionhost ami"
 }

@@ -1,8 +1,8 @@
 
 resource "aws_vpc_peering_connection" "satellite" {
   provider                  = aws.sat
-  peer_vpc_id   = module.main.main_region_vpc_id
-  vpc_id        = module.satellite.sat_region_vpc_id
+  peer_vpc_id   = module.main.region_vpc_id
+  vpc_id        = module.satellite.region_vpc_id
   peer_region = var.main_region
   auto_accept   = false
   tags = {
@@ -23,12 +23,12 @@ resource "aws_vpc_peering_connection_accepter" "main" {
 
 data "aws_vpc" "main" {
   provider  = aws.main
-  id = module.main.main_region_vpc_id
+  id = module.main.region_vpc_id
 }
 
 data "aws_vpc" "satellite" {
   provider  = aws.sat
-  id = module.satellite.sat_region_vpc_id
+  id = module.satellite.region_vpc_id
 }
 
 #Route table update
@@ -36,7 +36,7 @@ data "aws_vpc" "satellite" {
 
 resource "aws_route" "satellite_route_main" {
   provider  = aws.sat
-  for_each  = toset(module.satellite.sat_region_private_route_table_id)
+  for_each  = toset(module.satellite.region_private_route_table_id)
   route_table_id            = each.value
   destination_cidr_block    = data.aws_vpc.main.cidr_block
   vpc_peering_connection_id = aws_vpc_peering_connection.satellite.id
@@ -45,7 +45,7 @@ resource "aws_route" "satellite_route_main" {
 
 resource "aws_route" "main_route_satellite" {
   provider  = aws.main
-  for_each  = toset(module.main.main_region_private_route_table_id)
+  for_each  = toset(module.main.region_private_route_table_id)
   route_table_id            = each.value
   destination_cidr_block    = data.aws_vpc.satellite.cidr_block
   vpc_peering_connection_id = aws_vpc_peering_connection.satellite.id

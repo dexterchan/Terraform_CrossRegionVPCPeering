@@ -1,7 +1,7 @@
 locals {
   vpc_id           = module.vpc.vpc_id
-  region = var.sat_region
-  cidr = var.sat_vpc_cidr
+  region = var.region
+  cidr = var.vpc_cidr
   endpoint_subnets = [module.vpc.private_subnets[0]]
   
   asg_route_table_ids = module.vpc.private_route_table_ids

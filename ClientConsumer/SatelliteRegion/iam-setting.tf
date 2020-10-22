@@ -28,7 +28,7 @@ resource "aws_iam_role_policy_attachment" "ec2_CloudWatchAgentServerPolicy_polic
 data "template_file" "ssm_s3_config" {
   template = file("./policies/ssm_s3-policy.json")
   vars = {
-    region = var.sat_region
+    region = var.region
   }
 }
 
