@@ -23,3 +23,11 @@ output "main_subnetids"{
 output "satellite_subnetids"{
   value = module.satellite.subnet_id
 }
+
+output "main-default-sg_id" {
+  value = module.main.default-sg_id
+}
+
+output "satellite-default-sg_id" {
+  value = module.satellite.default-sg_id
+}

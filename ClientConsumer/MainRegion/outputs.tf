@@ -22,3 +22,8 @@ output "subnet_id" {
   description = "subnet id"
   value       = module.vpc.private_subnets
 }
+
+output "default-sg_id" {
+  description = "security group id of application"
+  value = module.vpc.default_security_group_id
+}

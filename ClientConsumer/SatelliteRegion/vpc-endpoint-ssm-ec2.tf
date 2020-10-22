@@ -1,3 +1,6 @@
+/*
+  vpc endpoint setup for SSM access for ec2
+*/
 
 resource "aws_vpc_endpoint" "s3" {
   vpc_id            = module.vpc.vpc_id
