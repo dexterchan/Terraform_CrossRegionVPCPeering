@@ -51,12 +51,12 @@ module "remote" {
     app_secondary_endpoint_svc_name=var.app_secondary_endpoint_svc_name
 }
 
-module "original" {
+module "origin" {
     providers = {
         aws = aws.org
     }
 
-    source="./Original"
+    source="./Origin"
     region=var.org_region
     
     

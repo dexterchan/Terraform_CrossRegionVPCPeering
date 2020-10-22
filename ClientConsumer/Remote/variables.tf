@@ -4,7 +4,6 @@ variable "region" {
 }
 
 variable "key_name" {
-  default = "aws_humble_pig"
 }
 variable "testPubKey" {}
 
@@ -24,12 +23,12 @@ variable "vpc_name" {
 }
 
 variable "vpc_cidr" {
-  description = "Main CIDR block for VPC"
+  description = "CIDR block for VPC"
   type = string
 }
 
 variable "org_vpc_cidr" {
-  description = "Original CIDR block for VPC"
+  description = "origin CIDR block for VPC"
   type = string
 }
 

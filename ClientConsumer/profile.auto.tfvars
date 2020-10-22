@@ -17,7 +17,7 @@ remote_bastionhost_ami="ami-0528a5175983e7f28"
 #Origin
 org_region="ap-southeast-2"
 org_vpc_cidr="10.10.0.0/16"
-org_vpc_name="ClientVPCOriginalSite"
+org_vpc_name="ClientVPCoriginSite"
 org_vpc_azs = ["ap-southeast-2a", "ap-southeast-2b"]
 org_vpc_public_subnets = ["10.10.11.0/24", "10.10.12.0/24"]
 org_vpc_private_subnets = ["10.10.1.0/24", "10.10.2.0/24"]

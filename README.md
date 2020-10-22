@@ -63,7 +63,7 @@ export VPC_PRIMARY_SERVICE_NAME=<vpc endpoint primary service name e.g. com.amaz
 export VPC_SECONDARY_SERVICE_NAME=<vpc endpoint secondary service name e.g. com.amazonaws.vpce.us-east-1.vpce-svc-0b2948573a91a6ddf>
 
 #Setup the vpc endpoint for both region and network for both region first
-terraform apply -target module.original -target module.remote \
+terraform apply -target module.origin -target module.remote \
 -var "app_primary_endpoint_svc_name=${VPC_PRIMARY_SERVICE_NAME}" \
 -var "app_secondary_endpoint_svc_name=${VPC_SECONDARY_SERVICE_NAME}"
 

@@ -1,8 +1,8 @@
 
-resource "aws_vpc_peering_connection" "original" {
+resource "aws_vpc_peering_connection" "origin" {
   provider                  = aws.org
   peer_vpc_id   = module.remote.region_vpc_id
-  vpc_id        = module.original.region_vpc_id
+  vpc_id        = module.origin.region_vpc_id
   peer_region = var.remote_region
   auto_accept   = false
   tags = {
@@ -13,7 +13,7 @@ resource "aws_vpc_peering_connection" "original" {
 # Accepter's side of the connection.
 resource "aws_vpc_peering_connection_accepter" "remote" {
   provider                  = aws.remote
-  vpc_peering_connection_id = aws_vpc_peering_connection.original.id
+  vpc_peering_connection_id = aws_vpc_peering_connection.origin.id
   auto_accept               = true
 
   tags = {
@@ -26,28 +26,28 @@ data "aws_vpc" "remote" {
   id = module.remote.region_vpc_id
 }
 
-data "aws_vpc" "original" {
+data "aws_vpc" "origin" {
   provider  = aws.org
-  id = module.original.region_vpc_id
+  id = module.origin.region_vpc_id
 }
 
 #Route table update
 
 
-resource "aws_route" "original_route_remote" {
+resource "aws_route" "origin_route_remote" {
   provider  = aws.org
-  for_each  = toset(module.original.region_private_route_table_id)
+  for_each  = toset(module.origin.region_private_route_table_id)
   route_table_id            = each.value
   destination_cidr_block    = data.aws_vpc.remote.cidr_block
-  vpc_peering_connection_id = aws_vpc_peering_connection.original.id
-  depends_on                = [module.original]
+  vpc_peering_connection_id = aws_vpc_peering_connection.origin.id
+  depends_on                = [module.origin]
 }
 
-resource "aws_route" "remote_route_original" {
+resource "aws_route" "remote_route_origin" {
   provider  = aws.remote
   for_each  = toset(module.remote.region_private_route_table_id)
   route_table_id            = each.value
-  destination_cidr_block    = data.aws_vpc.original.cidr_block
-  vpc_peering_connection_id = aws_vpc_peering_connection.original.id
-  depends_on                = [module.original]
+  destination_cidr_block    = data.aws_vpc.origin.cidr_block
+  vpc_peering_connection_id = aws_vpc_peering_connection.origin.id
+  depends_on                = [module.origin]
 }
