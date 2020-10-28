@@ -1,15 +1,9 @@
 
 
 
-resource "aws_key_pair" "deployer" {
-  key_name   = var.sat_key_name
-  public_key = var.sat_testPubKey
-}
-
 /*
 resource "aws_instance" "bastion" {
-  key_name      = aws_key_pair.deployer.key_name
-  ami           = var.sat_bastionhost_ami
+  ami           = var.bastionhost_ami
   instance_type = "t2.micro"
   subnet_id     = module.vpc.public_subnets[0]
   security_groups = [aws_security_group.bastion_ssh.id]
@@ -27,8 +21,7 @@ resource "aws_iam_instance_profile" "instance_profile" {
 }
 
 resource "aws_instance" "testprivate" {
-  key_name      = aws_key_pair.deployer.key_name
-  ami           = var.sat_bastionhost_ami
+  ami           = var.bastionhost_ami
   instance_type = "t2.micro"
   subnet_id     = module.vpc.private_subnets[0]
   security_groups = [aws_security_group.bastion_ssh_private.id]

@@ -53,7 +53,7 @@ DNS name of the VPC endpoint service (PrivateLink) for connection in main region
 app_primary_endpoint_svc_name="com.amazonaws.vpce.us-west-2.vpce-svc-09c04c40432fd9b4c"
 
 **S3 vpc endpoint log bucket**
-ARN of S3 bucket as log data sink of vpc endpoint traffic
+ARN of S3 bucket as log data sink of vpc endpoint traffic in remote region
 s3_vpc_endpoint_log_arn = "arn:aws:s3:::boargcp-vpcendpointlog"
 
 **Run Command**
@@ -62,8 +62,8 @@ cd ClientConsumer
 export VPC_PRIMARY_SERVICE_NAME=<vpc endpoint primary service name e.g. com.amazonaws.vpce.us-east-1.vpce-svc-0c078abf59c16d2a0>
 export VPC_SECONDARY_SERVICE_NAME=<vpc endpoint secondary service name e.g. com.amazonaws.vpce.us-east-1.vpce-svc-0b2948573a91a6ddf>
 
-#Setup the vpc endpoint for main region and network for both region first
-terraform apply -target module.main -target module.satellite \
+#Setup the vpc endpoint for both region and network for both region first
+terraform apply -target module.origin -target module.remote \
 -var "app_primary_endpoint_svc_name=${VPC_PRIMARY_SERVICE_NAME}" \
 -var "app_secondary_endpoint_svc_name=${VPC_SECONDARY_SERVICE_NAME}"
 
@@ -110,6 +110,10 @@ If you don't want to wait, you can use ip address of VPC endpoint instead <br>
 ```
 curl -X GET '<vpc end point dns name>:8194/blp/mktdata?token=JWT1&sessionId=sessionid1&mktdatacode=XAUUSD+Curncy&fields=BID&fields=ASK'
 ```
+
+export BPIPEHOSTNAME=<vpc endpoint url>
+export BBG_CLIENTCERT_PWD=<client cert pwd>
+
 
 **Expected result**
 Streaming market data with HTTP Server Side Emit (SSE)

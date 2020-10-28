@@ -17,7 +17,7 @@ resource "aws_vpc_endpoint" "primary_webmkt_service" {
   subnet_ids          = module.vpc.private_subnets
   private_dns_enabled = false
 
-  tags = var.main_vpc_tags
+  tags = var.vpc_tags
 }
 
 resource "aws_vpc_endpoint" "secondary_webmkt_service" {
@@ -30,5 +30,5 @@ resource "aws_vpc_endpoint" "secondary_webmkt_service" {
   subnet_ids          = module.vpc.private_subnets
   private_dns_enabled = false
 
-  tags = var.main_vpc_tags
+  tags = var.vpc_tags
 }
