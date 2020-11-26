@@ -11,10 +11,6 @@ variable "dockerimage" {
   type = string
 }
 
-variable "ssh_key_name" {
-  type = string
-}
-
 variable "ami" {
   type = string
 }
@@ -27,4 +23,7 @@ variable "subnet_id" {
 }
 variable "security_groups" {
   type = list(string)
+}
+variable "iam_instance_profile" {
+  type = string
 }

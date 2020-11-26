@@ -18,12 +18,12 @@ resource "aws_cloudwatch_log_group" "emulator" {
 }
 
 resource "aws_instance" "emulator" {
-  key_name        = var.ssh_key_name
-  ami             = var.ami
-  instance_type   = var.machineType
-  subnet_id       = var.subnet_id
-  user_data       = data.template_file.user_data.rendered
-  security_groups = var.security_groups
+  ami                  = var.ami
+  instance_type        = var.machineType
+  subnet_id            = var.subnet_id
+  user_data            = data.template_file.user_data.rendered
+  security_groups      = var.security_groups
+  iam_instance_profile = var.iam_instance_profile
   tags = {
     Terraform   = "true"
     Environment = "dev"
