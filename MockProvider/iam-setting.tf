@@ -98,24 +98,3 @@ resource "aws_iam_role_policy_attachment" "ecs_task_app_execution_role_kms_polic
     role = aws_iam_role.ecs_task_app_execution_role.id
     policy_arn = aws_iam_policy.ecs_task_app_execution_role_kms_policy.arn
 }
-
-//Below is the inline policy
-data "template_file" "ecs_role_policy" {
-  template = <<EOF
-{
-  "Version": "2008-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": [
-          "ecs.amazonaws.com",
-          "ec2.amazonaws.com"
-        ]
-      },
-      "Effect": "Allow"
-    }
-  ]
-}
-EOF
-}

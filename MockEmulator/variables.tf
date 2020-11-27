@@ -66,3 +66,7 @@ variable "emulator_cw_loggrp" {
 variable "emulator_ami" {
   type = string
 }
+
+variable "numOfServiceInstances" {
+  description = "number of Service instance"
+}

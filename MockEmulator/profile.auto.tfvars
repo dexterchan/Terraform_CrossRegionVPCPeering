@@ -28,3 +28,5 @@ emulator_cw_loggrp="emulator"
 
 min_size=1
 max_size=10
+
+numOfServiceInstances=2
