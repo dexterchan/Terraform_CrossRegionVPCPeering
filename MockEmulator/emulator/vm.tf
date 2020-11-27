@@ -1,6 +1,6 @@
 
 data "template_file" "user_data" {
-  template = file("./emulator/scripts/startEmulator.sh.templ")
+  template = file("./emulator/scripts/startEmulator.sh.templ.full")
   vars = {
     REGION = var.region
     LOGGRP = "/ec2/${var.LOGGRP}"

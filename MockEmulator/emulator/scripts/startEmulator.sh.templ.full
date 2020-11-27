@@ -1,5 +1,6 @@
 #!/bin/sh
 docker run --log-driver=awslogs \
+-e LATENCY_MS=0 \
 --log-opt awslogs-region=${REGION} \
 --log-opt awslogs-group=${LOGGRP} \
 --restart unless-stopped -dit -p 8194:8194 ${IMAGE}
