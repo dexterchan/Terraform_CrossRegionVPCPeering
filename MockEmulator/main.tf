@@ -15,7 +15,7 @@ module "emulator1" {
   LOGGRP               = "${var.emulator_cw_loggrp}1"
   dockerimage          = var.MockEmulator_image
   ami                  = var.emulator_ami
-  subnet_id            = module.vpc.private_subnets[0]
+  subnet_id            = module.vpc.public_subnets[0]
   security_groups      = [aws_security_group.app-traffic.id]
   iam_instance_profile = aws_iam_instance_profile.instance_profile.name
 }
@@ -26,7 +26,7 @@ module "emulator2" {
   LOGGRP               = "${var.emulator_cw_loggrp}2"
   dockerimage          = var.MockEmulator_image
   ami                  = var.emulator_ami
-  subnet_id            = module.vpc.private_subnets[1]
+  subnet_id            = module.vpc.public_subnets[1]
   security_groups      = [aws_security_group.app-traffic.id]
   iam_instance_profile = aws_iam_instance_profile.instance_profile.name
 }

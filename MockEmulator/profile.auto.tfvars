@@ -18,11 +18,11 @@ vpc_tags={
 
 
 # task docker image
-MockEmulator_image="192592784707.dkr.ecr.us-east-1.amazonaws.com/websocket-bpipe-emulator:v0.alpine"
+MockEmulator_image="192592784707.dkr.ecr.us-east-1.amazonaws.com/websocket-bpipe-emulator:v1.alpine"
 nginx_proxy_task_docker_image="192592784707.dkr.ecr.us-east-1.amazonaws.com/bpipe-appliance-proxy:v1.alpine"
 vpc_endpointsvc_allowed_principals=["arn:aws:iam::119217677828:user/TerraformDeploy"]
 
-emulator_ami="ami-0648c73485df3c9d0"
+emulator_ami="ami-0750fb546dc51f13f"
 
 emulator_cw_loggrp="emulator"
 

@@ -18,6 +18,17 @@ resource "aws_vpc_endpoint" "cloudwatch" {
   private_dns_enabled = true
 }
 
+
+resource "aws_vpc_endpoint" "cloudwatch_monitoring" {
+  vpc_id            = local.vpc_id
+  service_name      = "com.amazonaws.${var.region}.monitoring"
+  vpc_endpoint_type = "Interface"
+
+  security_group_ids  = local.vpc-endpoint_security_group
+  subnet_ids          = local.endpoint_subnets
+  private_dns_enabled = true
+}
+
 resource "aws_vpc_endpoint" "ecs-agent" {
   vpc_id            = local.vpc_id
   service_name      = "com.amazonaws.${var.region}.ecs-agent"
@@ -108,7 +119,7 @@ resource "aws_vpc_endpoint" "ssmmessages" {
   private_dns_enabled = true
 }
 
-/*
+
 resource "aws_vpc_endpoint" "kms" {
   vpc_id            = local.vpc_id
   service_name      = "com.amazonaws.${var.region}.kms"
@@ -118,4 +129,4 @@ resource "aws_vpc_endpoint" "kms" {
   subnet_ids          = local.endpoint_subnets
   private_dns_enabled = true
 }
-*/
+
