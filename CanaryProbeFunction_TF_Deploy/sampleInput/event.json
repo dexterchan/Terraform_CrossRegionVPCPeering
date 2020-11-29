@@ -1,0 +1,15 @@
+{
+  
+  "detail-type": "Scheduled Event",
+  "source": "aws.events",
+  "region": "${region}",
+  "detail": {
+    "hostname": "${host}",
+    "port": "${port}",
+    "authAppCredential": "${auth}",
+    "testTicker" : "BBHBEAT Index",
+    "id" : "${id}",
+    "expectedTickers": "58",
+    "max_run_seconds": "60"
+  }
+}
