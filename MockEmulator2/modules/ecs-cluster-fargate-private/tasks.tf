@@ -35,10 +35,7 @@ resource "aws_ecs_task_definition" "nginx-proxy" {
   memory                   = 2048
   requires_compatibilities = ["FARGATE"]
   container_definitions    = data.template_file.nginx_proxy_task_config.rendered
-  tags = {
-    Environment = "staging"
-    Application = "nginx-proxy"
-  }
+  tags = var.tags
   depends_on = [
     aws_cloudwatch_log_group.applog-nginx,
   ]

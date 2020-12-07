@@ -9,7 +9,9 @@ locals {
 
 
 module "ecs-private-cluster1" {
-  provider             = aws.emulator
+  providers = {
+        aws = aws.emulator
+  }
   source = "./modules/ecs-cluster-fargate-private"
   region = var.region
 
@@ -17,8 +19,8 @@ module "ecs-private-cluster1" {
 
   vpc_id = module.vpc.vpc_id
 
-  asg_subnets = [module.vpc.private_subnets[0], module.vpc.private_subnets[1]]
-  lb_subnets  = module.vpc.public_subnets
+  asg_subnets = module.vpc.private_subnets
+  lb_subnets  = module.vpc.private_subnets
 
   min_size         = var.min_size
   max_size         = var.max_size
@@ -36,6 +38,9 @@ module "ecs-private-cluster1" {
 
   ecs_task_app_execution_role-arn      = aws_iam_role.ecs_task_app_execution_role.arn
   ecs_terraform_taskexecution_role-arn = aws_iam_role.ecs_terraform_taskexecution_role.arn
+
+  tags = var.module_tags
+  
   depends_on = [
     aws_vpc_endpoint.cloudwatch,
     aws_vpc_endpoint.ecs-agent,

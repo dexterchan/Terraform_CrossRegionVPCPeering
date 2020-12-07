@@ -24,11 +24,7 @@ resource "aws_instance" "emulator" {
   user_data            = data.template_file.user_data.rendered
   security_groups      = var.security_groups
   iam_instance_profile = var.iam_instance_profile
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-    Name        = "emulator"
-  }
+  tags = var.tags
   depends_on = [
     aws_cloudwatch_log_group.emulator,
   ]

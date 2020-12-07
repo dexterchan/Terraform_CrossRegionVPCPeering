@@ -71,3 +71,7 @@ variable "service_host1" {
 variable "service_host2" {
   type = string
 }
+
+variable "tags"{
+  description = "tags to apply to whole setup"
+}

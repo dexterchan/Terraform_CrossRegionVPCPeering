@@ -4,9 +4,7 @@ resource "aws_lb" "fargate" {
   load_balancer_type = "network"
   internal           = false
 
-  tags = {
-    Environment = "staging"
-  }
+  tags = var.tags
 }
 
 

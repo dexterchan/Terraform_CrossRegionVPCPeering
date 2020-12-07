@@ -10,3 +10,5 @@ resource "aws_ecs_cluster" "main" {
         capacity_provider = "FARGATE_SPOT"
     }
 }
+
+

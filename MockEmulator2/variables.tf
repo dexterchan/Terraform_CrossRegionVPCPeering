@@ -1,15 +1,12 @@
 variable "region" {
   type = string
 }
-variable "key_name" {
-  type = string
-}
-variable "testPubKey" {}
 
 variable "vpc_name" {
   description = "Name of VPC"
   default     = "example-vpc"
 }
+
 variable "vpc_azs" {
   description = "Availability zones for VPC"
 }
@@ -34,6 +31,10 @@ variable "vpc_enable_nat_gateway" {
 
 variable "vpc_tags" {
   description = "Tags to apply to resources created by VPC module"
+}
+
+variable "module_tags"{
+  description = "tags to apply to whole setup"
 }
 
 variable "min_size" {
@@ -69,4 +70,18 @@ variable "emulator_ami" {
 
 variable "numOfServiceInstances" {
   description = "number of Service instance"
+}
+
+variable "monitor_vpc_name"{
+  description = "name of vpc"
+  default = "monitor-vpc"
+}
+variable "monitor_vpc_azs" {
+  description = "Availability zones for VPC"
+}
+variable "monitor_vpc_private_subnets" {
+  description = "Private subnets for VPC"
+}
+variable "monitor_vpc_public_subnets"{
+  description = "Public subnets for VPC"
 }

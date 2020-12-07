@@ -27,3 +27,6 @@ variable "security_groups" {
 variable "iam_instance_profile" {
   type = string
 }
+variable "tags"{
+  description = "tags to apply to whole setup"
+}

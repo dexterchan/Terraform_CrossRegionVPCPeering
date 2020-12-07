@@ -9,6 +9,7 @@ locals {
 
 //reference : https://aws.amazon.com/blogs/compute/setting-up-aws-privatelink-for-amazon-ecs-and-amazon-ecr/
 resource "aws_vpc_endpoint" "cloudwatch" {
+  provider             = aws.emulator
   vpc_id            = local.vpc_id
   service_name      = "com.amazonaws.${var.region}.logs"
   vpc_endpoint_type = "Interface"
@@ -20,6 +21,7 @@ resource "aws_vpc_endpoint" "cloudwatch" {
 
 
 resource "aws_vpc_endpoint" "cloudwatch_monitoring" {
+  provider             = aws.emulator
   vpc_id            = local.vpc_id
   service_name      = "com.amazonaws.${var.region}.monitoring"
   vpc_endpoint_type = "Interface"
@@ -30,6 +32,7 @@ resource "aws_vpc_endpoint" "cloudwatch_monitoring" {
 }
 
 resource "aws_vpc_endpoint" "ecs-agent" {
+  provider             = aws.emulator
   vpc_id            = local.vpc_id
   service_name      = "com.amazonaws.${var.region}.ecs-agent"
   vpc_endpoint_type = "Interface"
@@ -40,6 +43,7 @@ resource "aws_vpc_endpoint" "ecs-agent" {
 }
 
 resource "aws_vpc_endpoint" "ecs-telemetry" {
+  provider             = aws.emulator
   vpc_id            = local.vpc_id
   service_name      = "com.amazonaws.${var.region}.ecs-telemetry"
   vpc_endpoint_type = "Interface"
@@ -50,6 +54,7 @@ resource "aws_vpc_endpoint" "ecs-telemetry" {
 }
 
 resource "aws_vpc_endpoint" "ecs" {
+  provider             = aws.emulator
   vpc_id            = local.vpc_id
   service_name      = "com.amazonaws.${var.region}.ecs"
   vpc_endpoint_type = "Interface"
@@ -60,6 +65,7 @@ resource "aws_vpc_endpoint" "ecs" {
 }
 
 resource "aws_vpc_endpoint" "ecr_dkr" {
+  provider             = aws.emulator
   vpc_id            = local.vpc_id
   service_name      = "com.amazonaws.${var.region}.ecr.dkr"
   vpc_endpoint_type = "Interface"
@@ -70,6 +76,7 @@ resource "aws_vpc_endpoint" "ecr_dkr" {
 }
 
 resource "aws_vpc_endpoint" "ecr_api" {
+  provider             = aws.emulator
   vpc_id            = local.vpc_id
   service_name      = "com.amazonaws.${var.region}.ecr.api"
   vpc_endpoint_type = "Interface"
@@ -80,6 +87,7 @@ resource "aws_vpc_endpoint" "ecr_api" {
 }
 
 resource "aws_vpc_endpoint" "s3" {
+  provider             = aws.emulator
   vpc_id            = local.vpc_id
   service_name      = "com.amazonaws.${var.region}.s3"
   vpc_endpoint_type = "Gateway"
@@ -87,6 +95,7 @@ resource "aws_vpc_endpoint" "s3" {
 }
 
 resource "aws_vpc_endpoint" "ssm" {
+  provider             = aws.emulator
   vpc_id            = local.vpc_id
   service_name      = "com.amazonaws.${var.region}.ssm"
   vpc_endpoint_type = "Interface"
@@ -100,6 +109,7 @@ resource "aws_vpc_endpoint" "ssm" {
 
 
 resource "aws_vpc_endpoint" "ec2messages" {
+  provider             = aws.emulator
   vpc_id            = module.vpc.vpc_id
   service_name      = "com.amazonaws.${var.region}.ec2messages"
   vpc_endpoint_type = "Interface"
@@ -110,6 +120,7 @@ resource "aws_vpc_endpoint" "ec2messages" {
 }
 
 resource "aws_vpc_endpoint" "ssmmessages" {
+  provider             = aws.emulator
   vpc_id            = module.vpc.vpc_id
   service_name      = "com.amazonaws.${var.region}.ssmmessages"
   vpc_endpoint_type = "Interface"
@@ -121,6 +132,7 @@ resource "aws_vpc_endpoint" "ssmmessages" {
 
 
 resource "aws_vpc_endpoint" "kms" {
+  provider             = aws.emulator
   vpc_id            = local.vpc_id
   service_name      = "com.amazonaws.${var.region}.kms"
   vpc_endpoint_type = "Interface"
