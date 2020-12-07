@@ -2,7 +2,7 @@ resource "aws_lb" "fargate" {
   name               = "nlb-${var.ecs_cluster_name}"
   subnets            = var.lb_subnets
   load_balancer_type = "network"
-  internal           = true
+  internal           = false
 
   tags = {
     Environment = "staging"

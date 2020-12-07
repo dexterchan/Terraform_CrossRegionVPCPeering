@@ -1,0 +1,45 @@
+[
+  {
+    "name": "${app}",
+    "image": "${task_docker_image}",
+    "cpu": 256,
+    "memory": 512,
+    "links": [],
+    "portMappings": [
+      {
+        "containerPort": 8194,
+        "protocol": "tcp"
+      }
+    ],
+    "essential": true,
+    "entryPoint": [],
+    "command": [],
+    "environment": [
+      { "name": "HOST1", 
+        "value": "${HOST1}" },
+      {
+        "name": "HOST2",
+        "value": "${HOST2}"
+      },
+      {
+        "name": "PORT",
+        "value": "8194"
+      },
+      {
+        "name": "HEALTH_CHECK_PORT",
+        "value": "80"
+      }
+    ],
+    "mountPoints": [],
+    "volumesFrom": [],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "secretOptions": null,
+      "options": {
+        "awslogs-group": "${log_grp}",
+        "awslogs-region": "${region}",
+        "awslogs-stream-prefix": "ecs"
+      }
+    }
+  }
+]

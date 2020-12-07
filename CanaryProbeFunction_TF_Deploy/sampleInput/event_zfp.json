@@ -1,0 +1,17 @@
+{
+  
+  "detail-type": "Scheduled Event",
+  "source": "aws.events",
+  "region": "${region}",
+  "detail": {
+    "hostname": "cloudpoint1.bloomberg.com",
+    "port": "8194",
+    "authAppCredential": "blp-apac:test",
+    "clientCertLocation": "s3://${zfp_cert_bucket}/clientCertificate.pk12",
+    "rootCertLocation": "s3://${zfp_cert_bucket}/rootCertificate.pk7",
+    "testTicker" : "BBHBEAT Index",
+    "id" : "${id}",
+    "expectedTickers": "58",
+    "max_run_seconds": "60"
+  }
+}
