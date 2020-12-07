@@ -31,6 +31,7 @@ variable "timeout" {
 }
 variable "zfp" {
   type = bool
+  default = false
 }
 variable "region" {
   type = string

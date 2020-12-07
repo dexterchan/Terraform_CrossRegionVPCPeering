@@ -1,0 +1,4 @@
+#!/bin/sh
+docker run  \
+-e LATENCY_MS=0 \
+--restart unless-stopped -dit -p 8194:8194 ${IMAGE}
