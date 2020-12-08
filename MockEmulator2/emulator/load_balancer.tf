@@ -2,8 +2,8 @@ module "alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 5.0"
 
-  name = "my-alb"
-
+  name = "my-nlb"
+  internal= false
   load_balancer_type = "network"
 
   vpc_id          = var.vpc_id
@@ -24,11 +24,16 @@ module "alb" {
         healthy_threshold   = 3
         unhealthy_threshold = 3
       }
-      stickiness = {
-        type            = "lb_cookie"
-        cookie_duration = 120
-        enabled         = true
-      }
+      
+    }
+  ]
+
+
+  http_tcp_listeners = [
+    {
+      port               = var.port
+      protocol           = "TCP"
+      target_group_index = 0
     }
   ]
 

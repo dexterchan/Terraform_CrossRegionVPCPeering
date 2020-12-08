@@ -31,7 +31,7 @@ module "emulator2" {
   vpc_id = module.vpc.vpc_id
   tags = var.module_tags
 }*/
-
+/*
 module "lambda_monitor1"{
   providers = {
         aws = aws.monitor
@@ -50,3 +50,4 @@ module "lambda_monitor1"{
   auth="test"
 
 }
+*/

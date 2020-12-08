@@ -11,8 +11,8 @@ output "subnetids" {
 output "default_security_group_id" {
   value = module.vpc.default_security_group_id
 }
-
+/*
 output "nlb_address1" {
   value = module.ecs-private-cluster1.nlb_address
 }
-
+*/

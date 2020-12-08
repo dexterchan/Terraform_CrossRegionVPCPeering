@@ -30,7 +30,7 @@ resource "aws_vpc_endpoint" "cloudwatch_monitoring" {
   subnet_ids          = local.endpoint_subnets
   private_dns_enabled = true
 }
-
+/*
 resource "aws_vpc_endpoint" "ecs-agent" {
   provider             = aws.emulator
   vpc_id            = local.vpc_id
@@ -84,7 +84,7 @@ resource "aws_vpc_endpoint" "ecr_api" {
   security_group_ids  = local.vpc-endpoint_security_group
   subnet_ids          = local.endpoint_subnets
   private_dns_enabled = true
-}
+}*/
 
 resource "aws_vpc_endpoint" "s3" {
   provider             = aws.emulator
@@ -130,7 +130,7 @@ resource "aws_vpc_endpoint" "ssmmessages" {
   private_dns_enabled = true
 }
 
-
+/*
 resource "aws_vpc_endpoint" "kms" {
   provider             = aws.emulator
   vpc_id            = local.vpc_id
@@ -141,4 +141,4 @@ resource "aws_vpc_endpoint" "kms" {
   subnet_ids          = local.endpoint_subnets
   private_dns_enabled = true
 }
-
+*/

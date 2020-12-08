@@ -1,6 +1,6 @@
 locals {
   vpc_id_svc           = module.monitor_vpc.vpc_id
-  service_name = module.ecs-private-cluster1.vpc_endpoint_service_mktsvc_service_name
+  //service_name = module.ecs-private-cluster1.vpc_endpoint_service_mktsvc_service_name
   subnet_ids = module.monitor_vpc.private_subnets
   monitor-endpoint_subnets = [ module.monitor_vpc.private_subnets[0] ]
   vpc-webapp_tcp_sg_svc = [
@@ -11,7 +11,7 @@ locals {
 }
 
 
-
+/*
 resource "aws_vpc_endpoint" "primary_webmkt_service" {
   provider             = aws.monitor
   vpc_id            = local.vpc_id_svc
@@ -24,7 +24,7 @@ resource "aws_vpc_endpoint" "primary_webmkt_service" {
   private_dns_enabled = false
 
   tags = var.vpc_tags
-}
+}*/
 
 
 resource "aws_vpc_endpoint" "monitor-cloudwatch_monitoring" {
