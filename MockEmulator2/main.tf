@@ -8,11 +8,13 @@ module "emulator1" {
   dockerimage          = var.MockEmulator_image
   ami                  = var.emulator_ami
   subnet_id            = module.vpc.public_subnets[0]
+  subnet_ids = module.vpc.private_subnets
   security_groups      = [aws_security_group.app-traffic.id]
   iam_instance_profile = aws_iam_instance_profile.instance_profile.name
+  vpc_id = module.vpc.vpc_id
   tags = var.module_tags
 }
-
+/*
 module "emulator2" {
   providers = {
         aws = aws.emulator
@@ -23,10 +25,12 @@ module "emulator2" {
   dockerimage          = var.MockEmulator_image
   ami                  = var.emulator_ami
   subnet_id            = module.vpc.public_subnets[0]
+  subnet_ids = module.vpc.private_subnets
   security_groups      = [aws_security_group.app-traffic.id]
   iam_instance_profile = aws_iam_instance_profile.instance_profile.name
+  vpc_id = module.vpc.vpc_id
   tags = var.module_tags
-}
+}*/
 
 module "lambda_monitor1"{
   providers = {

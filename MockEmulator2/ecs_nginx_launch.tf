@@ -31,7 +31,7 @@ module "ecs-private-cluster1" {
   ]
 
   service_host1 = module.emulator1.private_ip
-  service_host2 = module.emulator2.private_ip
+  service_host2 = module.emulator1.private_ip
 
   nginx_proxy_task_docker_image      = var.nginx_proxy_task_docker_image
   vpc_endpointsvc_allowed_principals = var.vpc_endpointsvc_allowed_principals

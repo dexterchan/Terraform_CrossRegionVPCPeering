@@ -44,6 +44,6 @@ resource "aws_cloudwatch_event_target" "canarytrigger" {
   rule      = aws_cloudwatch_event_rule.schedule_run.name
   arn       = aws_lambda_function.remote_canary.arn
 
-  input = data.template_file.zfp_lambdainput_config.rendered
+  input = data.template_file.lambdainput_config.rendered
 
 }
