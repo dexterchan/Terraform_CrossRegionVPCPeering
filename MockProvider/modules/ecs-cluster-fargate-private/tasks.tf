@@ -72,7 +72,7 @@ resource "aws_ecs_service" "webapp-http-svc" {
   launch_type   = "FARGATE"
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.web.arn
+    target_group_arn = aws_lb_target_group.tcp_app.arn
     container_name   = "webapp-http"
     container_port   = 3000
   }
@@ -84,10 +84,10 @@ resource "aws_ecs_service" "webapp-http-svc" {
   }
   depends_on = [
     aws_lb.fargate,
-    aws_lb_target_group.web
+    aws_lb_target_group.tcp_app
   ]
 }
-
+/*
 resource "aws_ecs_task_definition" "nginx-proxy" {
   family                   = "nginx-proxy-staging"
   network_mode             = "awsvpc"
@@ -129,4 +129,4 @@ resource "aws_ecs_service" "nginx-proxy-svc" {
     aws_lb.fargate,
     aws_lb_target_group.tcp_app
   ]
-}
+}*/
